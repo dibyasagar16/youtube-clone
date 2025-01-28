@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import './Recommended.css'
 import { assets } from '../../assets/assets'
 import { valueConverter } from '../../data'
-// import { api_key } from '../../data';
 import { Link } from 'react-router-dom'
+import { api_key } from '../../Utils/Config'
+
 
 const Recommended = ({ categoryId }) => {
 
@@ -11,7 +12,7 @@ const Recommended = ({ categoryId }) => {
 
     const fetchData = async () => {
 
-        const relatedVideoURL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=5&regionCode=IN&videoCategoryId=${categoryId}&key=${import.meta.env.VITE_YOUTUBE_API_KEY}`
+        const relatedVideoURL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=5&regionCode=IN&videoCategoryId=${categoryId}&key=${api_key}`
 
         await fetch(relatedVideoURL)
             .then(res => res.json())

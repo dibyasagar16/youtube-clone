@@ -3,14 +3,15 @@ import "./Feed.css";
 import { assets } from "../../assets/assets";
 import { Link } from "react-router-dom";
 import { valueConverter } from "../../data";
-// import { api_key } from "../../data";
 import moment from 'moment'
+import { api_key } from "../../Utils/Config";
+
 
 const Feed = ({ category }) => {
     const [data, setData] = useState([]);
 
     const fetchData = async () => {
-        const videoLists_URL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=10&regionCode=IN&videoCategoryId=${category}&key=${import.meta.env.VITE_YOUTUBE_API_KEY}`;
+        const videoLists_URL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=10&regionCode=IN&videoCategoryId=${category}&key=${api_key}`;
 
         try {
             const response = await fetch(videoLists_URL);

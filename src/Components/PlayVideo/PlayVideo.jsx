@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import './PlayVideo.css'
 import { assets } from '../../assets/assets'
 import { valueConverter } from '../../data';
-// import { api_key } from '../../data';
 import moment from 'moment';
 import { useParams } from 'react-router-dom';
+import { api_key } from '../../Utils/Config';
 
 const PlayVideo = () => {
 
@@ -18,7 +18,7 @@ const PlayVideo = () => {
 
     const fetchVideoData = async () => {
         // Fetchting Video Data.
-        const videoDetailsURL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${import.meta.env.VITE_YOUTUBE_API_KEY}`
+        const videoDetailsURL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${api_key}`
         await fetch(videoDetailsURL)
             .then(res => res.json())
             .then(data => {
@@ -33,7 +33,7 @@ const PlayVideo = () => {
 
     const fetchChannelData = async () => {
         // Fetching Channel Details
-        const channelDataURL = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${apiData.snippet.channelId}&key=${import.meta.env.VITE_YOUTUBE_API_KEY}`
+        const channelDataURL = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${apiData.snippet.channelId}&key=${api_key}`
         await fetch(channelDataURL)
             .then(res => res.json())
             .then(data => {
@@ -45,7 +45,7 @@ const PlayVideo = () => {
             }).catch((error) => console.error("Error getting channel data", error));
 
         // Fetching Comments 
-        const commentURL = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${videoId}&key=${import.meta.env.VITE_YOUTUBE_API_KEY}`;
+        const commentURL = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${videoId}&key=${api_key}`;
         await fetch(commentURL)
             .then(res => res.json())
             .then(data => setCommentData(data.items))
