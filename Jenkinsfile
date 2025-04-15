@@ -16,10 +16,10 @@ pipeline {
 
         stage('Inject .env') {
             steps {
-                // Manually inject .env from VM
-                sh 'cp /home/vagrant/envs/.env .'
+                sh 'cp /path/to/local/.env .env'
             }
         }
+
 
         stage('Build Docker Image') {
             steps {
