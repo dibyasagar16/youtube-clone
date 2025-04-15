@@ -1,13 +1,14 @@
-# Stage 1: Build React App
-FROM node:16 as build
+# Use Node 18 or 20 (LTS versions)
+FROM node:18 as build  # or node:20
+
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve with Nginx
+# Production stage (nginx)
 FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
