@@ -16,7 +16,7 @@ pipeline {
 
         stage('Inject .env') {
             steps {
-                sh 'cp /path/to/local/.env .env'
+                sh 'cp /home/vagrant/envs/.env'
             }
         }
 
