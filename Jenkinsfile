@@ -10,7 +10,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Get the code from GitHub
-                git 'https://github.com/your-username/your-repo-name.git'
+                git 'https://github.com/dibyasagar16/youtube-clone.git'
             }
         }
 
