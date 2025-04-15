@@ -13,7 +13,7 @@ This is a YouTube Clone built using **Vite + React**. The project fetches and di
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/youtube-clone.git
+   git clone https://github.com/dibyasagar16/youtube-clone.git
    ```
 2. Navigate to the project directory:
    ```sh
@@ -56,7 +56,7 @@ This is a YouTube Clone built using **Vite + React**. The project fetches and di
    - Import the `API_KEY` in any component where you need to use it. For example:
 
      ```js
-     import { api_key } from "../../utils/Config";
+     import { api_key } from "../../Utils/Config";
 
      const videoLists_URL = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=10&regionCode=IN&videoCategoryId=${category}&key=${api_key}`;
      ```
